@@ -16,7 +16,8 @@ lấy cảm hứng từ imissmycafe.com.
 | Database | MySQL 8.0 (Docker) ✅ Running |
 | State    | NgRx 19 (Store + Effects) |
 | Styling  | Tailwind CSS v4 |
-| Deploy   | Vercel (frontend) + Railway/Render (backend) |
+| Deploy   | Vercel (frontend) ✅ https://imissmycafe-demo.vercel.app + Railway/Render (backend) |
+| GitHub   | https://github.com/Tyone37/imissmycafe-demo |
 
 ---
 
@@ -203,16 +204,17 @@ features/
 ### UI Design ✅ Done (redesigned to match imissmycafe.com)
 
 - Font: **Playfair Display** (Google Fonts, 700/900 weight + italic) — load trong `index.html`
-- Title: `font-size: 3rem`, `font-weight: 900`
+- Title: `font-size: 4.5rem`, `font-weight: 900`
 - Layout: 3 cột `300px / 1fr / 280px` — title+tagline+player | illustration | sound controls
   - Tablet (≤1024px): ẩn cột giữa, 2 cột `280px 1fr`
   - Mobile (≤640px): 1 cột, sound list hiển thị dạng 2 cột
 - `app.ts` quản lý dark mode trực tiếp (không qua SettingsComponent)
 - Dark mode toggle: floating circle button top-right, icon SVG mặt trăng filled (☀ khi dark mode)
 - `assets/` phải khai báo trong `angular.json` với `input: "src/assets", output: "assets"` (Angular 18+ dùng `public/` mặc định)
-- Illustration: `assets/cafe-illustration.png` với `mix-blend-mode: multiply` (light) / `screen` (dark)
-- Sound controls: minimal, no card/box — thin 2px slider track, 10px dot thumb, `--slider-track` CSS var
-- Sound row: grid `22px 90px 1fr` — play button tròn (SVG ▶/■) | tên | volume slider
+- **Favicon**: `public/favicon.png` — icon cốc cà phê PNG; khai báo trong `index.html` dạng `<link rel="icon" type="image/png" href="favicon.png">` + apple-touch-icon
+- Illustration: `assets/cafe-illustration.png` với `mix-blend-mode: multiply` (light) / `screen` (dark); `width: 110%; max-width: 560px`
+- Sound controls: minimal, no card/box — thin 3px slider track, 13px dot thumb, `--slider-track` CSS var
+- Sound row: grid `26px 100px 1fr` — play button tròn (SVG ▶/■) | tên | volume slider; col-right `padding-top: 6rem`
 - CSS vars: `--color-bg: #f5e6d3`, `--color-primary: #6B705C`, `--slider-track` cho dark/light mode
 
 ### Environment variables
