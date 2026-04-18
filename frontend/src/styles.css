@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* CSS custom properties cho theme cafe */
+:root {
+  --color-bg: #f5e6d3;
+  --color-bg-card: #fdf0e4;
+  --color-primary: #6B705C;
+  --color-text: #1a1a1a;
+  --color-text-muted: rgba(0, 0, 0, 0.45);
+  --color-spotify: #1DB954;
+  --color-youtube: #FF0000;
+  --slider-track: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode — toggle qua class .dark trên <html> */
+.dark {
+  --color-bg: #1e1b16;
+  --color-bg-card: #2a2520;
+  --color-text: #f0e8dc;
+  --color-text-muted: rgba(240, 232, 220, 0.5);
+  --slider-track: rgba(255, 255, 255, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

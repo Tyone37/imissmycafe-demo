@@ -1,0 +1,118 @@
+/* Floating theme toggle */
+.theme-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+
+  &:hover { transform: scale(1.15); }
+}
+
+/* 3-column page layout */
+.page-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 280px;
+  min-height: calc(100vh - 3rem);
+  padding: 2rem 2.5rem 2rem;
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  /* Tablet: hide illustration */
+  @media (max-width: 1024px) {
+    grid-template-columns: 280px 1fr;
+    .col-center { display: none; }
+  }
+
+  /* Mobile: single column, tighter padding */
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 1rem 1rem;
+    gap: 1.5rem;
+    .col-center { display: none; }
+  }
+}
+
+/* Left column */
+.col-left {
+  padding-top: 0.875rem;
+
+  @media (max-width: 640px) { padding-top: 0.5rem; }
+}
+
+.app-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--color-text);
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 640px) { font-size: 2.2rem; }
+}
+
+.tagline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+}
+
+/* Center column: illustration */
+.col-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.cafe-illustration {
+  width: 100%;
+  max-width: 460px;
+  mix-blend-mode: multiply;
+  user-select: none;
+  pointer-events: none;
+}
+
+.dark .cafe-illustration {
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* Right column */
+.col-right {
+  padding-top: 1.5rem;
+
+  @media (max-width: 640px) { padding-top: 0; }
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    &:hover { color: var(--color-text); }
+  }
+}

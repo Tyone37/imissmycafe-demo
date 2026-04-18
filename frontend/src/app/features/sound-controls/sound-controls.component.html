@@ -1,0 +1,49 @@
+@if (sounds$ | async; as sounds) {
+  <div class="sounds-wrap">
+
+    <div class="sounds-header">
+      <span class="section-label">Ambient Sounds</span>
+      <div class="header-actions">
+        <label class="opt-check">
+          <input type="checkbox" [(ngModel)]="showPan"> pan
+        </label>
+        <button class="stop-all" (click)="stopAll()">stop all</button>
+      </div>
+    </div>
+
+    <div class="sounds-list">
+      @for (sound of soundList; track sound.id) {
+        <div class="sound-row" [class.is-playing]="sounds[sound.id]?.playing">
+          <button
+            class="play-btn"
+            (click)="toggle(sound.id)"
+            [attr.aria-label]="(sounds[sound.id]?.playing ? 'Stop ' : 'Play ') + sound.label">
+            @if (sounds[sound.id]?.playing) {
+              <svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+            } @else {
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5l10 5.5-10 5.5V2.5z"/></svg>
+            }
+          </button>
+          <span class="sound-label">{{ sound.label }}</span>
+          <input
+            type="range"
+            class="vol-slider"
+            min="0" max="100"
+            [value]="(sounds[sound.id]?.volume ?? 0.5) * 100"
+            (input)="onVolumeChange(sound.id, $event)"
+            [attr.aria-label]="sound.label + ' volume'">
+          @if (showPan) {
+            <input
+              type="range"
+              class="pan-slider"
+              min="-100" max="100"
+              [value]="(sounds[sound.id]?.pan ?? 0) * 100"
+              (input)="onPanChange(sound.id, $event)"
+              [attr.aria-label]="sound.label + ' pan'">
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+}

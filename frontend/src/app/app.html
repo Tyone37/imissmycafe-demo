@@ -1,0 +1,40 @@
+<!-- Floating dark mode toggle -->
+<button
+  class="theme-btn"
+  (click)="toggleDark()"
+  [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
+  @if (isDarkMode) {
+    ☀
+  } @else {
+    <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  }
+</button>
+
+<!-- Main 3-column layout -->
+<div class="page-grid">
+
+  <!-- Left: Title + tagline + music player -->
+  <div class="col-left">
+    <h1 class="app-title">I Miss<br>My Cafe</h1>
+    <p class="tagline">Take a seat and stay awhile.</p>
+    <app-music-player />
+  </div>
+
+  <!-- Center: Cafe illustration -->
+  <div class="col-center" aria-hidden="true">
+    <img src="assets/cafe-illustration.png" alt="" class="cafe-illustration">
+  </div>
+
+  <!-- Right: Ambient sound controls -->
+  <div class="col-right">
+    <app-sound-controls />
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  Inspired by <a href="https://imissmycafe.com" target="_blank" rel="noopener">imissmycafe.com</a>
+</footer>

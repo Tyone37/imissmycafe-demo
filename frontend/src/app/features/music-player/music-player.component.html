@@ -1,0 +1,81 @@
+<div class="music-player">
+
+  <!-- Provider toggle -->
+  <div class="provider-toggle">
+    <button
+      class="toggle-btn spotify"
+      [class.active]="(provider$ | async) === 'spotify'"
+      (click)="switchProvider('spotify')">
+      Spotify
+    </button>
+    <button
+      class="toggle-btn youtube"
+      [class.active]="(provider$ | async) === 'youtube'"
+      (click)="switchProvider('youtube')">
+      YouTube
+    </button>
+  </div>
+
+  <!-- Spotify embed -->
+  @if ((provider$ | async) === 'spotify') {
+    @if ((spotifyId$ | async); as sid) {
+      <iframe
+        [src]="spotifyEmbedUrl(((spotifyType$ | async) ?? 'playlist'), sid) | safeUrl"
+        width="100%"
+        height="352"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Spotify player">
+      </iframe>
+    }
+    <div class="url-section">
+      @if (!showSpotifyInput) {
+        <button class="change-link" (click)="showSpotifyInput = true">change track / playlist</button>
+      } @else {
+        <div class="url-input-row">
+          <input
+            class="url-input"
+            type="text"
+            placeholder="Paste Spotify track, playlist or album link…"
+            [(ngModel)]="spotifyInput"
+            (keydown)="onSpotifyKeydown($event)"
+            autofocus>
+          <button class="url-apply spotify-apply" (click)="applySpotifyUrl()">→</button>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- YouTube embed -->
+  @if ((provider$ | async) === 'youtube') {
+    @if ((youtubeId$ | async); as vid) {
+      <iframe
+        [src]="youtubeEmbedUrl(((youtubeType$ | async) ?? 'video'), vid) | safeUrl"
+        width="100%"
+        height="280"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="YouTube player">
+      </iframe>
+    }
+    <div class="url-section">
+      @if (!showYoutubeInput) {
+        <button class="change-link" (click)="showYoutubeInput = true">change video / playlist</button>
+      } @else {
+        <div class="url-input-row">
+          <input
+            class="url-input"
+            type="text"
+            placeholder="Paste YouTube video or playlist URL…"
+            [(ngModel)]="youtubeInput"
+            (keydown)="onYoutubeKeydown($event)"
+            autofocus>
+          <button class="url-apply" (click)="applyYouTubeUrl()">→</button>
+        </div>
+      }
+    </div>
+  }
+
+</div>

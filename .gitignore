@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+target/
+*.jar
+*.war
+*.class
+
+# Angular
+.angular/
+frontend/dist/
+
+# Environment & secrets
+.env
+.env.local
+.env*.local
+*.env
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.suo
+*.user
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Docker volumes (data only, keep compose file)
+mysql-data/
+
+# Screenshots (dev artifacts)
+frontend/screenshot*.png
