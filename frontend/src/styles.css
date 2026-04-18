@@ -9,7 +9,7 @@
   --color-text-muted: rgba(0, 0, 0, 0.45);
   --color-spotify: #1DB954;
   --color-youtube: #FF0000;
-  --slider-track: rgba(0, 0, 0, 0.15);
+  --slider-track: rgba(0, 0, 0, 0.28);
 }
 
 /* Dark mode — toggle qua class .dark trên <html> */
